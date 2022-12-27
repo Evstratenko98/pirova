@@ -5,10 +5,17 @@ services:
     image: mysql:8
     restart: always
     volumes:
-      - ../db:/var/lib/mysql/data
+      - ./db:/var/lib/mysql
     environment:
-      POSTGRES_USER: pirova
-      POSTGRES_PASSWORD: pirova
-      POSTGRES_DB: pirova
+      MYSQL_ROOT_PASSWORD: pirova
+      MYSQL_DATABASE: pirova
+      MYSQL_USER: pirova
+      MYSQL_PASSWORD: pirova
     ports:
       - "5432:5432"
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
